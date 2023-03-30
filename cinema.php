@@ -2,7 +2,7 @@
 
 //código feito por Bruno José e Kael Bezerra
 
-class Cliente
+class Cliente extends Filme
 {
   public $idade;
   private $ingresso;
@@ -11,8 +11,8 @@ class Cliente
    $this->idade = $idade;
    $this->ingresso = $ingresso;
   }
-  public function getCliente() {
-      if ($this->idade >= 18) {
+  public function getCliente($classificacao) {
+      if ($this->idade >= $classificacao) {
         echo "Você é maior de idade! Pode entrar! \n";
     }
       else {
@@ -53,7 +53,7 @@ $idade = 19;
 $ingresso = 20;
 
 $nomeDoFilme = "Avatar";
-$classificacao = 18;
+$classificacao = 12;
 $sala = 20;
 
 
@@ -61,8 +61,8 @@ $cliente = new Cliente($idade, $ingresso);
 $filme = new Filme($nomeDoFilme, $classificacao ,$sala);
 
 if ($cliente->idade < $filme->classificacao) {
-  echo $cliente->getCliente();
+  echo $cliente->getCliente($filme->classificacao);
 } else {
-  echo $cliente->getCliente();
+  echo $cliente->getCliente($filme->classificacao);
   echo $filme->entrar($cliente->getIngresso());
 }
